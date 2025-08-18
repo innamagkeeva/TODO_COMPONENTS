@@ -31,10 +31,20 @@ function addTask(): void {
 const highPriorityTasks = computed(() => {
   return tasks.value.filter((task) => task.priority === 'high')
 })
-
 const lowPriorityTasks = computed(() => {
   return tasks.value.filter((task) => task.priority === 'low')
 })
+
+function changeStatus(task: Task): void {
+  task.status = task.status === 'done' ? 'notDone' : 'done'
+}
+
+function deleteTask(taskToDelete: Task) {
+  const index = tasks.value.findIndex((task) => task === taskToDelete)
+  if (index !== -1) {
+    tasks.value.splice(index, 1)
+  }
+}
 </script>
 
 <template>
@@ -67,9 +77,15 @@ const lowPriorityTasks = computed(() => {
         <input
           class="list__checkbox"
           type="checkbox"
+          @click="changeStatus(task)"
         />
         <p class="list__text">{{ task.text }}</p>
-        <button class="list__btn">+</button>
+        <button
+          class="list__button-delete"
+          @click="deleteTask(task)"
+        >
+          +
+        </button>
       </li>
     </ul>
     <h1 class="title">LOW</h1>
@@ -94,9 +110,15 @@ const lowPriorityTasks = computed(() => {
         <input
           class="list__checkbox"
           type="checkbox"
+          @click="changeStatus(task)"
         />
         <p class="list__text">{{ task.text }}</p>
-        <button class="list__btn">+</button>
+        <button
+          class="list__button-delete"
+          @click="deleteTask(task)"
+        >
+          +
+        </button>
       </li>
     </ul>
   </div>
@@ -136,7 +158,7 @@ const lowPriorityTasks = computed(() => {
   margin: 0;
 }
 
-.list__btn {
+.list__button-delete {
   rotate: 45deg;
 }
 
