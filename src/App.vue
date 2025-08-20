@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 import TaskInput from '@/components/TaskInput.vue'
+import AddButton from '@/components/AddButton.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -60,18 +61,7 @@ function deleteTask(taskToDelete: Task) {
         v-model="inputTaskTextHigh"
         placeholder="Добавить задачу"
       />
-      <!-- <input
-        class="form__input"
-        type="text"
-        placeholder="Добавить задачу"
-        v-model="inputTaskTextHigh"
-      /> -->
-      <button
-        class="Form__button"
-        type="submit"
-      >
-        +
-      </button>
+      <AddButton />
     </form>
     <ul class="list">
       <li
@@ -102,13 +92,8 @@ function deleteTask(taskToDelete: Task) {
         v-model="inputTaskTextLow"
         placeholder="Добавить задачу"
       />
-      <!-- <input
-        class="form__input"
-        type="text"
-        placeholder="Добавить задачу"
-        v-model="inputTaskTextLow"
-      /> -->
-      <button class="Form__button">+</button>
+
+      <AddButton />
     </form>
     <ul class="list">
       <li
