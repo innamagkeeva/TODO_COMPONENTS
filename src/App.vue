@@ -122,7 +122,6 @@ function deleteTask(taskToDelete: Task) {
   margin-bottom: 20px;
 }
 
-.form,
 .list__item {
   max-width: 100%;
   height: 45px;
