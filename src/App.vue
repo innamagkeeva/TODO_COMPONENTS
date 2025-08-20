@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import TaskInput from '@/components/TaskInput.vue'
-import AddButton from '@/components/AddButton.vue'
+import TaskForm from '@/components/TaskForm.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -53,16 +52,11 @@ function deleteTask(taskToDelete: Task) {
 <template>
   <div class="tasks">
     <h1 class="title">HIGH</h1>
-    <form
-      class="form"
-      @submit.prevent="addTask"
-    >
-      <TaskInput
-        v-model="inputTaskTextHigh"
-        placeholder="Добавить задачу"
-      />
-      <AddButton />
-    </form>
+    <TaskForm
+      v-model="inputTaskTextHigh"
+      placeholder="Добавить задачу"
+      @submit="addTask"
+    />
     <ul class="list">
       <li
         class="list__item"
@@ -84,17 +78,11 @@ function deleteTask(taskToDelete: Task) {
       </li>
     </ul>
     <h1 class="title">LOW</h1>
-    <form
-      class="form"
-      @submit.prevent="addTask"
-    >
-      <TaskInput
-        v-model="inputTaskTextLow"
-        placeholder="Добавить задачу"
-      />
-
-      <AddButton />
-    </form>
+    <TaskForm
+      v-model="inputTaskTextLow"
+      placeholder="Добавить задачу"
+      @submit="addTask"
+    />
     <ul class="list">
       <li
         class="list__item"

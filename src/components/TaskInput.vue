@@ -2,15 +2,11 @@
 defineProps<{
   placeholder: string
 }>()
-
-// const emit = defineEmits<{
-//   (e: 'update:modelValue', value: string): void
-//   // ???????? тут не могу придумать как сделать краткую запись ?????
-// }>()
+//Для себя: если это не написать, то все равно работает, но писать надо. GPT объяснил почему.
 
 const modelValue = defineModel<string>()
-// defineModel: Позволяет компоненту принимать v-model
-// Автоматически связывает  modelValue и событие update:modelValue, то есть меняет его на нужный из родительского
+// // defineModel: Позволяет компоненту принимать v-model
+// // Автоматически связывает  modelValue и событие update:modelValue, то есть меняет его на нужный из родительского
 </script>
 
 <template>
