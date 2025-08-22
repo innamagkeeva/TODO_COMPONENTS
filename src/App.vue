@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 import TaskForm from '@/components/TaskForm.vue'
+import TaskCheckbox from '@/components/TaskCheckbox.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -63,10 +64,9 @@ function deleteTask(taskToDelete: Task) {
         v-for="task in highPriorityTasks"
         :key="task.text"
       >
-        <input
-          class="list__checkbox"
-          type="checkbox"
-          @click="changeStatus(task)"
+        <TaskCheckbox
+          :checked="task.status === 'done'"
+          @change="changeStatus(task)"
         />
         <p class="list__text">{{ task.text }}</p>
         <button
@@ -89,10 +89,9 @@ function deleteTask(taskToDelete: Task) {
         v-for="task in lowPriorityTasks"
         :key="task.text"
       >
-        <input
-          class="list__checkbox"
-          type="checkbox"
-          @click="changeStatus(task)"
+        <TaskCheckbox
+          :checked="task.status === 'done'"
+          @change="changeStatus(task)"
         />
         <p class="list__text">{{ task.text }}</p>
         <button
