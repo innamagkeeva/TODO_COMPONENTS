@@ -26,7 +26,7 @@ function onSubmit() {
   >
     <TaskInput
       v-model="modelValue"
-      placeholder="Добавить задачу"
+      :placeholder="placeholder"
     />
     <AddButton />
   </form>

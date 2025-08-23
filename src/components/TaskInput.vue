@@ -13,7 +13,7 @@ const modelValue = defineModel<string>()
   <input
     class="form__input"
     type="text"
-    placeholder="placeholder"
+    :placeholder="placeholder"
     v-model="modelValue"
   />
 </template>
