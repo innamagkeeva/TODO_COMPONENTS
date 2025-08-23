@@ -2,10 +2,8 @@
 import { computed, ref } from 'vue'
 
 import TaskForm from '@/components/TaskForm.vue'
-// import TaskCheckbox from '@/components/TaskCheckbox.vue'
-// import TaskText from '@/components/TaskText.vue'
-// import TaskButtonDelete from '@/components/TaskButtonDelete.vue'
 import TaskItem from '@/components/TaskItem.vue'
+import TaskList from '@/components/TaskList.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -61,30 +59,23 @@ function deleteTask(taskToDelete: Task) {
       placeholder="Добавить задачу"
       @submit="addTask"
     />
-    <ul class="list">
-      <TaskItem
-        v-for="task in highPriorityTasks"
-        :key="task.text"
-        :task="task"
-        @change-status="changeStatus"
-        @delete="deleteTask"
-      />
-    </ul>
+    <TaskList
+      :tasks="highPriorityTasks"
+      @change-status="changeStatus"
+      @delete="deleteTask"
+    />
+
     <h1 class="title">LOW</h1>
     <TaskForm
       v-model="inputTaskTextLow"
       placeholder="Добавить задачу"
       @submit="addTask"
     />
-    <ul class="list">
-      <TaskItem
-        v-for="task in lowPriorityTasks"
-        :key="task.text"
-        :task="task"
-        @change-status="changeStatus"
-        @delete="deleteTask"
-      />
-    </ul>
+    <TaskList
+      :tasks="lowPriorityTasks"
+      @change-status="changeStatus"
+      @delete="deleteTask"
+    />
   </div>
 </template>
 
@@ -102,10 +93,5 @@ function deleteTask(taskToDelete: Task) {
   width: 100px;
   margin: 0 auto;
   margin-bottom: 20px;
-}
-
-.list {
-  padding: 0;
-  margin: 0;
 }
 </style>
