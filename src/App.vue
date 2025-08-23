@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 import TaskForm from '@/components/TaskForm.vue'
 import TaskCheckbox from '@/components/TaskCheckbox.vue'
 import TaskText from '@/components/TaskText.vue'
+import TaskButtonDelete from '@/components/TaskButtonDelete.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -70,12 +71,7 @@ function deleteTask(taskToDelete: Task) {
           @change="changeStatus(task)"
         />
         <TaskText :text="task.text" />
-        <button
-          class="list__button-delete"
-          @click="deleteTask(task)"
-        >
-          +
-        </button>
+        <TaskButtonDelete @click="deleteTask(task)" />
       </li>
     </ul>
     <h1 class="title">LOW</h1>
@@ -95,12 +91,7 @@ function deleteTask(taskToDelete: Task) {
           @change="changeStatus(task)"
         />
         <TaskText :text="task.text" />
-        <button
-          class="list__button-delete"
-          @click="deleteTask(task)"
-        >
-          +
-        </button>
+        <TaskButtonDelete @click="deleteTask(task)" />
       </li>
     </ul>
   </div>
@@ -136,10 +127,6 @@ function deleteTask(taskToDelete: Task) {
 .list {
   padding: 0;
   margin: 0;
-}
-
-.list__button-delete {
-  rotate: 45deg;
 }
 
 button {
