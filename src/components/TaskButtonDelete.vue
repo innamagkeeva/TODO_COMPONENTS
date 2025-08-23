@@ -16,5 +16,8 @@ const emit = defineEmits<{
 <style scoped>
 .list__button-delete {
   rotate: 45deg;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 </style>

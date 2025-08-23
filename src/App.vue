@@ -2,9 +2,10 @@
 import { computed, ref } from 'vue'
 
 import TaskForm from '@/components/TaskForm.vue'
-import TaskCheckbox from '@/components/TaskCheckbox.vue'
-import TaskText from '@/components/TaskText.vue'
-import TaskButtonDelete from '@/components/TaskButtonDelete.vue'
+// import TaskCheckbox from '@/components/TaskCheckbox.vue'
+// import TaskText from '@/components/TaskText.vue'
+// import TaskButtonDelete from '@/components/TaskButtonDelete.vue'
+import TaskItem from '@/components/TaskItem.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -61,18 +62,13 @@ function deleteTask(taskToDelete: Task) {
       @submit="addTask"
     />
     <ul class="list">
-      <li
-        class="list__item"
+      <TaskItem
         v-for="task in highPriorityTasks"
         :key="task.text"
-      >
-        <TaskCheckbox
-          :checked="task.status === 'done'"
-          @change="changeStatus(task)"
-        />
-        <TaskText :text="task.text" />
-        <TaskButtonDelete @click="deleteTask(task)" />
-      </li>
+        :task="task"
+        @change-status="changeStatus"
+        @delete="deleteTask"
+      />
     </ul>
     <h1 class="title">LOW</h1>
     <TaskForm
@@ -81,18 +77,13 @@ function deleteTask(taskToDelete: Task) {
       @submit="addTask"
     />
     <ul class="list">
-      <li
-        class="list__item"
+      <TaskItem
         v-for="task in lowPriorityTasks"
         :key="task.text"
-      >
-        <TaskCheckbox
-          :checked="task.status === 'done'"
-          @change="changeStatus(task)"
-        />
-        <TaskText :text="task.text" />
-        <TaskButtonDelete @click="deleteTask(task)" />
-      </li>
+        :task="task"
+        @change-status="changeStatus"
+        @delete="deleteTask"
+      />
     </ul>
   </div>
 </template>
@@ -113,25 +104,8 @@ function deleteTask(taskToDelete: Task) {
   margin-bottom: 20px;
 }
 
-.list__item {
-  max-width: 100%;
-  height: 45px;
-  border: 1px solid black;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-}
-
 .list {
   padding: 0;
   margin: 0;
-}
-
-button {
-  border: none;
-  background-color: white;
-  cursor: pointer;
 }
 </style>
