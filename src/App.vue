@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 import TaskForm from '@/components/TaskForm.vue'
 import TaskList from '@/components/TaskList.vue'
+import TaskSectionTitle from '@/components/TaskSectionTitle.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -52,7 +53,7 @@ function deleteTask(taskToDelete: Task) {
 
 <template>
   <div class="tasks">
-    <h1 class="title">HIGH</h1>
+    <TaskSectionTitle text="HIGH" />
     <TaskForm
       v-model="inputTaskTextHigh"
       placeholder="Добавить задачу"
@@ -64,7 +65,7 @@ function deleteTask(taskToDelete: Task) {
       @delete="deleteTask"
     />
 
-    <h1 class="title">LOW</h1>
+    <TaskSectionTitle text="LOW" />
     <TaskForm
       v-model="inputTaskTextLow"
       placeholder="Добавить задачу"
@@ -86,11 +87,5 @@ function deleteTask(taskToDelete: Task) {
   margin: 0 auto;
   padding: 10px 20px;
   font-size: 16px;
-}
-
-.title {
-  width: 100px;
-  margin: 0 auto;
-  margin-bottom: 20px;
 }
 </style>
