@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import TaskForm from '@/components/TaskForm.vue'
-import TaskList from '@/components/TaskList.vue'
-import TaskSectionTitle from '@/components/TaskSectionTitle.vue'
+import TaskSection from '@/components/TaskSection.vue'
 
 const inputTaskTextHigh = ref('')
 const inputTaskTextLow = ref('')
@@ -53,26 +51,20 @@ function deleteTask(taskToDelete: Task) {
 
 <template>
   <div class="tasks">
-    <TaskSectionTitle text="HIGH" />
-    <TaskForm
+    <TaskSection
+      title="HIGH"
       v-model="inputTaskTextHigh"
-      placeholder="Добавить задачу"
-      @submit="addTask"
-    />
-    <TaskList
       :tasks="highPriorityTasks"
+      @submit="addTask"
       @change-status="changeStatus"
       @delete="deleteTask"
     />
 
-    <TaskSectionTitle text="LOW" />
-    <TaskForm
+    <TaskSection
+      title="LOW"
       v-model="inputTaskTextLow"
-      placeholder="Добавить задачу"
-      @submit="addTask"
-    />
-    <TaskList
       :tasks="lowPriorityTasks"
+      @submit="addTask"
       @change-status="changeStatus"
       @delete="deleteTask"
     />
