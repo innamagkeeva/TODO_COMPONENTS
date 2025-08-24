@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue'
 
 import TaskForm from '@/components/TaskForm.vue'
-import TaskItem from '@/components/TaskItem.vue'
 import TaskList from '@/components/TaskList.vue'
 
 const inputTaskTextHigh = ref('')

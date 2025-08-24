@@ -15,8 +15,8 @@ const { task } = defineProps<{
 // Эта запись заменяет const props = defineProps...  неявный проп. Иначе проп не используется (предупреждение)
 
 const emit = defineEmits<{
-  (e: 'change-status', task: Task): void
-  (e: 'delete', task: Task): void
+  'change-status': [task: Task]
+  delete: [task: Task]
 }>()
 </script>
 
