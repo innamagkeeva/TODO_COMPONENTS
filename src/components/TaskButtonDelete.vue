@@ -1,16 +1,7 @@
-<script setup lang="ts">
-const emit = defineEmits<{
-  click: []
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <button
-    class="list__button-delete"
-    @click="emit('click')"
-  >
-    +
-  </button>
+  <button class="list__button-delete">+</button>
 </template>
 
 <style scoped>

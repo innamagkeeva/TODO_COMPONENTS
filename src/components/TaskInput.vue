@@ -1,9 +1,4 @@
 <script setup lang="ts">
-defineProps<{
-  placeholder: string
-}>()
-//Для себя: если это не написать, то все равно работает, но писать надо. GPT объяснил почему.
-
 const modelValue = defineModel<string>()
 // // defineModel: Позволяет компоненту принимать v-model
 // // Автоматически связывает  modelValue и событие update:modelValue, то есть меняет его на нужный из родительского
@@ -13,7 +8,6 @@ const modelValue = defineModel<string>()
   <input
     class="form__input"
     type="text"
-    :placeholder="placeholder"
     v-model="modelValue"
   />
 </template>

@@ -12,7 +12,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  'change-status': [task: Task]
+  changeStatus: [task: Task]
   delete: [task: Task]
 }>()
 </script>
@@ -23,7 +23,7 @@ const emit = defineEmits<{
       v-for="task in props.tasks"
       :key="task.text"
       :task="task"
-      @change-status="emit('change-status', task)"
+      @change-status="emit('changeStatus', task)"
       @delete="emit('delete', task)"
     />
   </ul>

@@ -18,9 +18,8 @@ const { title, tasks } = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  'update:modelValue': [value: string]
   submit: []
-  'change-status': [task: Task]
+  changeStatus: [task: Task]
   delete: [task: Task]
 }>()
 
@@ -38,7 +37,7 @@ function handleSubmit() {
   />
   <TaskList
     :tasks="tasks"
-    @change-status="(task) => emit('change-status', task)"
+    @change-status="(task) => emit('changeStatus', task)"
     @delete="(task) => emit('delete', task)"
   />
 </template>

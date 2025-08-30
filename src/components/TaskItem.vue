@@ -15,7 +15,7 @@ const { task } = defineProps<{
 // Эта запись заменяет const props = defineProps...  неявный проп. Иначе проп не используется (предупреждение)
 
 const emit = defineEmits<{
-  'change-status': [task: Task]
+  changeStatus: [task: Task]
   delete: [task: Task]
 }>()
 </script>
@@ -24,7 +24,7 @@ const emit = defineEmits<{
   <li class="list__item">
     <TaskCheckbox
       :checked="task.status === 'done'"
-      @change="emit('change-status', task)"
+      @change="emit('changeStatus', task)"
     />
     <TaskText :text="task.text" />
     <TaskButtonDelete @click="emit('delete', task)" />
